@@ -132,7 +132,7 @@ class NetteFileSystem extends Object implements IFileSystem
      */
     public function fileContentType($filePath)
     {
-        // TODO: Implement fileContentType() method.
+        return \Nette\Utils\MimeTypeDetector::fromFile($filePath);
     }
 
     /**

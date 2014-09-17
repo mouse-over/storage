@@ -50,7 +50,7 @@ class StorageExtension extends CompilerExtension
     protected function loadRoutes(ContainerBuilder $container, $config)
     {
         $container->addDefinition($this->prefix('storages'))
-            ->setClass('MouseOver\Storage\StorageList');
+            ->setClass('MouseOver\Storage\Application\StorageList');
 
         $container->addDefinition($this->prefix('responder'))
             ->setClass('MouseOver\Storage\Application\StorageResponder');

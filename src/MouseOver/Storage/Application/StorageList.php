@@ -6,8 +6,9 @@
  * @copyright    Copyright (c) 2011-2014 Vaclav Prokes
  */
 
-namespace MouseOver\Storage;
+namespace MouseOver\Storage\Application;
 
+use MouseOver\Storage\IStorage;
 use Nette\ArrayList;
 
 
@@ -37,7 +38,7 @@ class StorageList extends ArrayList
     public function getStorage($storageName)
     {
         foreach ($this as $storage) {
-            if ($storage->name === $storageName) {
+            if ($storage->getName() === $storageName) {
                 return $storage;
             }
         }

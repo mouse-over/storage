@@ -20,15 +20,15 @@ use Nette;
 class StorageResponder extends Nette\Object
 {
 
-    /** @var \MouseOver\Storage\StorageList  */
+    /** @var \MouseOver\Storage\Application\StorageList  */
     private $storages;
 
     /**
      * Constructor
      *
-     * @param \MouseOver\Storage\StorageList $storages Storage list
+     * @param \MouseOver\Storage\Application\StorageList $storages Storage list
      */
-    function __construct(\MouseOver\Storage\StorageList $storages)
+    function __construct(MouseOver\Storage\Application\StorageList $storages)
     {
         $this->storages = $storages;
     }

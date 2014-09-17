@@ -26,7 +26,7 @@ class StorageResponderTest extends TestCase
     /** @var  \MouseOver\Storage\FileSystem\Storage|\Mockery\Mock */
     private $storage;
 
-    /** @var  \MouseOver\Storage\StorageList|\Mockery\Mock */
+    /** @var  \MouseOver\Storage\Application\StorageList|\Mockery\Mock */
     private $storageList;
 
     /** @var \MouseOver\Storage\Application\StorageResponder */
@@ -36,7 +36,7 @@ class StorageResponderTest extends TestCase
     {
         Environment::$checkAssertions = false;
 
-        $this->storageList = \Mockery::mock('\MouseOver\Storage\StorageList');
+        $this->storageList = \Mockery::mock('\MouseOver\Storage\Application\StorageList');
         $this->storage = \Mockery::mock('\MouseOver\Storage\IStorage[findFile,fileSize,fileExists]');
         $this->storageResponder = new StorageResponder($this->storageList);
     }

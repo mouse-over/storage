@@ -1,0 +1,6 @@
+/vendor/
+/tests/*/output/
+composer.lock
+*.iml
+*.ipr
+*.iws

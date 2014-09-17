@@ -1,0 +1,30 @@
+{
+    "name": "mouseover/storage",
+    "description": "MouseOver storage",
+    "type": "library",
+    "keywords": ["php", "storage", "file storage"],
+    "license": ["MIT"],
+    "authors": [
+        {
+            "name": "Vaclav Prokes",
+            "email": "vprokes@mouse-over.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "MouseOver\\Storage": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "nette/nette": "2.1.*"
+    },
+    "suggest": {
+        "unimapper/unimapper": "UniMapper"
+    },
+    "require-dev": {
+        "nette/tester": "~1.2.0",
+        "mockery/mockery": "~0.9.0",
+        "bauer01/unimapper": "dev-master"
+    }
+}

@@ -126,7 +126,9 @@ class Storage implements IStorage
     public function saveFileMetadata($name, $metadata = [])
     {
         $file = $this->findFile($name);
-        $this->metadataStorage->saveFileMetadata($file, $metadata);
+        if ($metadata && $this->metadataStorage) {
+            $this->metadataStorage->saveFileMetadata($file, $metadata);
+        }
         return $file;
     }
 
@@ -140,8 +142,11 @@ class Storage implements IStorage
      */
     public function getFileMetadata($name)
     {
-        $file = $this->findFile($name);
-        return $this->metadataStorage->findFor($file);
+        if ($this->metadataStorage) {
+            $file = $this->findFile($name);
+            return $this->metadataStorage->findFor($file);
+        }
+        return null;
     }
 
     /**
@@ -184,7 +189,9 @@ class Storage implements IStorage
         $file = $this->findFile($name);
         if ($file) {
             $this->fileSystem->delete($this->filePath($name));
-            $this->metadataStorage->removeFile($file);
+            if ($this->metadataStorage) {
+                $this->metadataStorage->removeFile($file);
+            }
         }
     }
 

@@ -86,7 +86,7 @@ interface IStorage
      *
      * @param string $name File name
      *
-     * @return mixed
+     * @return \MouseOver\Storage\IReader|boolean
      */
     public function createFileReader($name);
 

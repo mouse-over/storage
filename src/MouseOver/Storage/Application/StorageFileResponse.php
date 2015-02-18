@@ -57,8 +57,11 @@ class StorageFileResponse extends Nette\Object implements Nette\Application\IRes
      *
      * @return void
      */
-    protected function sendStorageFile($storageFile, Nette\Http\IRequest $httpRequest, Nette\Http\IResponse $httpResponse)
-    {
+    protected function sendStorageFile(
+        $storageFile,
+        Nette\Http\IRequest $httpRequest,
+        Nette\Http\IResponse $httpResponse
+    ) {
         $httpResponse->setHeader('Accept-Ranges', 'bytes');
 
         $reader = $storageFile->getReader();
@@ -74,19 +77,25 @@ class StorageFileResponse extends Nette\Object implements Nette\Application\IRes
             }
 
             try {
-               $reader->setRange($start, $end);
+                $reader->setRange($start, $end);
             } catch (\InvalidArgumentException $invalidArgumentException) {
                 $httpResponse->setCode(416); // requested range not satisfiable
                 return;
             }
 
             $httpResponse->setCode(206);
-            $httpResponse->setHeader('Content-Range', 'bytes ' . $reader->getRangeStart() . '-' . $reader->getRangeEnd() . '/' . $reader->getFileSize());
+            $httpResponse->setHeader(
+                'Content-Range',
+                'bytes ' . $reader->getRangeStart() . '-' . $reader->getRangeEnd() . '/' . $reader->getFileSize()
+            );
             $reader->setRange($start, $end);
             $httpResponse->setHeader('Content-Length', $reader->getLength());
 
         } else {
-            $httpResponse->setHeader('Content-Range', 'bytes 0-' . ($reader->getFileSize() - 1) . '/' . $reader->getFileSize());
+            $httpResponse->setHeader(
+                'Content-Range',
+                'bytes 0-' . ($reader->getFileSize() - 1) . '/' . $reader->getFileSize()
+            );
             $httpResponse->setHeader('Content-Length', $reader->getLength());
         }
 

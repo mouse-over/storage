@@ -1,10 +1,4 @@
 <?php
-/**
- * This file is part of IntelliJ IDEA
- *
- * @author Vaclav Prokes (vprokes@mouse-over.net)
- */
-
 
 namespace MouseOver\Storage\FileSystem;
 
@@ -18,6 +12,7 @@ use Nette\InvalidStateException;
  */
 class FileReader implements IReader
 {
+
     /** @var  resource|bool File handle */
     private $handle;
 
@@ -40,11 +35,12 @@ class FileReader implements IReader
     /**
      * Constructor
      *
-     * @param $filePath
+     * @param string $filePath File path
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct($filePath) {
+    public function __construct($filePath)
+    {
         $this->fileSize = $this->length = $this->currentLength = filesize($filePath);
         $this->handle = fopen($filePath, 'r');
         if ($this->handle === false) {
@@ -134,6 +130,8 @@ class FileReader implements IReader
     }
 
     /**
+     * Read
+     *
      * @return bool|string
      */
     public function read()
@@ -166,12 +164,15 @@ class FileReader implements IReader
     }
 
 
+    /**
+     * Destructor
+     */
     function __destruct()
     {
-       if ($this->handle) {
-           fclose($this->handle);
-           $this->handle = null;
-       }
+        if ($this->handle) {
+            fclose($this->handle);
+            $this->handle = null;
+        }
     }
 
 

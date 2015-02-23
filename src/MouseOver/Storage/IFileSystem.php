@@ -114,4 +114,16 @@ interface IFileSystem
      * @return int
      */
     public function fileSize($filePath);
+
+    /**
+     * SplFileObject factory
+     *
+     * @param string   $file_name        The file to read.
+     * @param string   $open_mode        [optional] The mode in which to open the file. See fopen() for a list of allowed modes.
+     * @param boolean  $use_include_path [optional] Whether to search in the include_path for filename.
+     * @param resource $context          [optional] A valid context resource created with stream_context_create().
+     *
+     * @return \SplFileObject
+     */
+    public function createFileObject ($file_name, $open_mode = 'r', $use_include_path = false, $context = null);
 }

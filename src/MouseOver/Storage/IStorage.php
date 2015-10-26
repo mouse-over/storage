@@ -82,6 +82,15 @@ interface IStorage
     public function fileExists($name);
 
     /**
+     * Return's file size
+     *
+     * @param string $name File name
+     *
+     * @return int file size
+     */
+    public function fileSize($name);
+
+    /**
      * Create file reader
      *
      * @param string $name File name
@@ -90,5 +99,15 @@ interface IStorage
      */
     public function createFileReader($name);
 
+    /**
+     * Rename file
+     *
+     * @param string $name    Unique file name of existing file
+     * @param string $newName New file name
+     * @param bool   $overwrite Allow overwrite
+     *
+     * @return void
+     */
+    public function renameFile($name, $newName, $overwrite = true);
 
 }

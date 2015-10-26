@@ -244,10 +244,36 @@ class Storage implements IStorage
         return $this->fileSystem->fileContentType($path);
     }
 
+    /**
+     * Return's file size
+     *
+     * @param string $name File name
+     *
+     * @return int file size
+     */
     public function fileSize($name)
     {
         $path = $this->filePath($name);
         return $this->fileSystem->fileSize($path);
+    }
+
+
+    /**
+     * Rename file
+     *
+     * @param string $name    Unique file name of existing file
+     * @param string $newName New file name
+     * @param bool   $overwrite Allow overwrite
+     *
+     * TODO: change metadata to
+     *
+     * @return void
+     */
+    public function renameFile($name, $newName, $overwrite = true)
+    {
+        $path = $this->filePath($name);
+        $newPath = $this->filePath($newName);
+        $this->fileSystem->rename($path, $newPath, $overwrite);
     }
 
 }

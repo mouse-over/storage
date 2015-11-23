@@ -13,6 +13,8 @@ use MouseOver\Storage\FileSystem\StorageFile;
 use MouseOver\Storage\IFileSystem;
 use MouseOver\Storage\IMetadataStorage;
 use MouseOver\Storage\IStorage;
+use Nette\Utils\Finder;
+use Nette\Utils\Strings;
 
 /**
  * Description of Storage
@@ -174,7 +176,16 @@ class Storage implements IStorage
      */
     public function findFiles($where)
     {
-        // TODO: Implement findFiles() method.
+        $documents = array();
+        $path = $this->filePath($where);
+        $files = Finder::findFiles('*')->in($path);
+        foreach ($files as $file) {
+            if ($file instanceof \SplFileInfo && $file->isFile()) {
+                $id = Strings::replace($file->getRealPath(), $this->getStorageDir(), '', 1);
+                $documents[] = $this->findFile($id);
+            }
+        }
+        return $documents;
     }
 
     /**

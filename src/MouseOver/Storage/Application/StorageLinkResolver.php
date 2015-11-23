@@ -43,7 +43,7 @@ class StorageLinkResolver extends Object
     public function link($storageName, $fileName, $parameters = [])
     {
         $storage = $this->storages->getStorage($storageName);
-        return $this->basePath . '/' . $storageName . '/' . $fileName;
+        return '/'.$this->basePath . '/' . $storageName . '/' . $fileName;
     }
 
 

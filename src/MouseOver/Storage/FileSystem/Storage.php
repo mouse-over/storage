@@ -254,6 +254,11 @@ class Storage implements IStorage
         $path = $this->filePath($name);
         return $this->fileSystem->fileContentType($path);
     }
+    
+    public function filePublicName($name)
+    {
+        return $name;
+    }
 
     /**
      * Return's file size

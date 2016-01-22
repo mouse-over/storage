@@ -49,6 +49,16 @@ class StorageFile extends Object implements IStorageFile
     {
         return $this->name;
     }
+    
+    /**
+     * Return's file public name
+     *
+     * @return string
+     */
+    public function getPublicName()
+    {
+       return $this->storage->filePublicName($this->name); 
+    }
 
     /**
      * Return's file storage name

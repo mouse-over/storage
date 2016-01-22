@@ -13,6 +13,7 @@ namespace MouseOver\Storage;
  * @package MouseOver\Storage
  *
  * @property-read string $name          Unique name
+ * @property-read string $publicName    Public name
  * @property-read string $storageName   Storage name
  * @property-read string $contentType   Content type
  * @property-read string $content       Content

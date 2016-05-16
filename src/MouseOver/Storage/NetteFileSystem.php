@@ -132,8 +132,10 @@ class NetteFileSystem extends Object implements IFileSystem
      */
     public function fileContentType($filePath)
     {
-        return \Nette\Utils\MimeTypeDetector::fromFile($filePath);
+        $type = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $filePath);
+        return strpos($type, '/') ? $type : 'application/octet-stream';
     }
+
 
     /**
      * Return's file size

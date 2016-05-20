@@ -58,7 +58,7 @@ class StorageExtension extends CompilerExtension
         $container->addDefinition($this->prefix('linkResolver'))
             ->setClass('MouseOver\Storage\Application\StorageLinkResolver', [$config['module']]);
 
-        $container->getDefinition('nette.latte')
+        $container->getDefinition('nette.latteFactory')
             ->addSetup('MouseOver\Storage\Application\StorageMacros::install($service->getCompiler(), ?)', array($this->prefix('@linkResolver')));
 
         $routesList = $container->addDefinition($this->prefix('storageRoutes')) // no namespace for back compatibility

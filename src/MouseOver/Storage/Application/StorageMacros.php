@@ -22,17 +22,19 @@ class StorageMacros extends \Nette\Latte\Macros\MacroSet
     /** @var  StorageLinkResolver */
     private static $linkResolver;
 
-    public static function install(\Nette\Latte\Compiler $compiler, StorageLinkResolver $linkResolver = null)
+    public static function install($compiler, StorageLinkResolver $linkResolver = null)
     {
         self::$linkResolver = $linkResolver;
         $me = new static($compiler);
-        $me->addMacro('slink', array($me, 'macroStorageLink'));
+        $me->addMacro('slink', array($me, 'macroStorageLink'), NULL, function (\Latte\MacroNode $node, \Latte\PhpWriter $writer) use ($me) {
+            return ' ?> href="<?php ' . $me->macroStorageLink($node, $writer) . ' ?>"<?php ';
+        });
     }
 
     /**
      * n:slink="..."
      */
-    public function macroStorageLink(\Nette\Latte\MacroNode $node, \Nette\Latte\PhpWriter $writer)
+    public function macroStorageLink(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
     {
         return $writer->write(
             'echo rtrim(\MouseOver\Storage\Application\StorageMacros::link(%node.word, %node.array, $_presenter));'

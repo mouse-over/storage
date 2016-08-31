@@ -24,7 +24,8 @@ use Nette\DI\Statement;
 class StorageExtension extends CompilerExtension
 {
     private $defaults = [
-        'module' => 'files'
+        'module' => 'files',
+        'routerClass' => 'Nette\Application\Routers\Route'
     ];
 
     /**
@@ -67,7 +68,7 @@ class StorageExtension extends CompilerExtension
 
 
         $routesList->addSetup(
-            '$service[] = new Nette\Application\Routers\Route(?, function ($presenter, $storage, $file) { return ?->handle($storage, $file, $presenter->request->getParameters()); })',
+            '$service[] = new ' . $config['routerClass'] . '(?, function ($presenter, $storage, $file) { return ?->handle($storage, $file, $presenter->request->getParameters()); })',
             array(
                 $config['module'].'/<storage>/<file [a-zA-Z0-9\-_.\/]+>',
                 $this->prefix('@responder')

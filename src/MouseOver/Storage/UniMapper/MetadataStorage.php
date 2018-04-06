@@ -10,7 +10,6 @@ namespace MouseOver\Storage\UniMapper;
 
 use MouseOver\Storage\IMetadataStorage;
 use Nette\DateTime;
-use Nette\Object;
 use UniMapper\Repository;
 
 
@@ -19,8 +18,9 @@ use UniMapper\Repository;
  *
  * @package MouseOver\Storage\Postgres
  */
-class MetadataStorage extends Object implements IMetadataStorage
+class MetadataStorage implements IMetadataStorage
 {
+    use \Nette\SmartObject;
 
     /** @var  \UniMapper\Repository */
     private $repository;

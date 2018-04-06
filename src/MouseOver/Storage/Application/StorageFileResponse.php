@@ -16,8 +16,9 @@ use Nette\Utils\Strings;
  * Class StorageFileResponse
  * @package MouseOver\Storage
  */
-class StorageFileResponse extends Nette\Object implements Nette\Application\IResponse
+class StorageFileResponse implements Nette\Application\IResponse
 {
+    use \Nette\SmartObject;
 
     /** @var \MouseOver\Storage\IStorageFile */
     private $storageFile;

@@ -17,8 +17,9 @@ use Nette;
  *
  * @package MouseOver\Storage
  */
-class StorageResponder extends Nette\Object
+class StorageResponder
 {
+    use \Nette\SmartObject;
 
     /** @var \MouseOver\Storage\Application\StorageList  */
     private $storages;

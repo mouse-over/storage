@@ -8,16 +8,15 @@
 namespace MouseOver\Storage\FileSystem;
 
 use MouseOver\Storage\IStorageFile;
-use Nette\Object;
-
 
 /**
  * Class StorageFile
  *
  * @package MouseOver\Storage
  */
-class StorageFile extends Object implements IStorageFile
+class StorageFile implements IStorageFile
 {
+    use \Nette\SmartObject;
 
     /** @var  \MouseOver\Storage\FileSystem\Storage */
     private $storage;

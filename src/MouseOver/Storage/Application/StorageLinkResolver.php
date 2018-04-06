@@ -7,15 +7,15 @@
  */
 
 namespace MouseOver\Storage\Application;
-use Nette\Object;
 
 
 /**
  * Class StorageLinkResolver
  * @package src\MouseOver\Storage\Application
  */
-class StorageLinkResolver extends Object
+class StorageLinkResolver
 {
+    use \Nette\SmartObject;
 
     /** @var \Nette\Http\IRequest */
     private $httpRequest;

@@ -8,7 +8,6 @@
 
 namespace MouseOver\Storage;
 
-use Nette\Object;
 
 
 /**
@@ -18,8 +17,10 @@ use Nette\Object;
  *
  * @package MouseOver\Storage
  */
-class NetteFileSystem extends Object implements IFileSystem
+class NetteFileSystem implements IFileSystem
 {
+    use \Nette\SmartObject;
+
     /**
      * Creates a directory.
      *

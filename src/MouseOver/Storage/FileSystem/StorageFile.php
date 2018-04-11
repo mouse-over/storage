@@ -13,6 +13,15 @@ use MouseOver\Storage\IStorageFile;
  * Class StorageFile
  *
  * @package MouseOver\Storage
+ * @property-read string                                   $name
+ * @property-read mixed                                    $content
+ * @property-read int                                      $contentLength
+ * @property-read string                                   $contentType
+ * @property-read mixed                                    $metadata
+ * @property-read string                                   $publicName
+ * @property-read \MouseOver\Storage\FileSystem\FileReader $reader
+ * @property-read string                                   $realPath
+ * @property-read string $storageName
  */
 class StorageFile implements IStorageFile
 {

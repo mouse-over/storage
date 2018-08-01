@@ -45,7 +45,11 @@ class StorageFileResponse implements Nette\Application\IResponse
     public function send(Nette\Http\IRequest $httpRequest, Nette\Http\IResponse $httpResponse)
     {
         $httpResponse->setContentType($this->storageFile->contentType ?: 'application/octet-stream');
-        $httpResponse->setHeader('Content-Disposition', 'attachment; filename="' . $this->storageFile->publicName . '"');
+        $httpResponse->setHeader('Content-Disposition',
+            ($this->storageFile->isForceDownload() ? 'attachment' : 'inline')
+            . '; filename="' . $this->storageFile->publicName . '"'
+            . '; filename*=utf-8\'\'' . rawurlencode($this->storageFile->publicName));
+
         $this->sendStorageFile($this->storageFile, $httpRequest, $httpResponse);
     }
 

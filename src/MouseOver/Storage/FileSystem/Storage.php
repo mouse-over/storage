@@ -36,6 +36,9 @@ class Storage implements IStorage
     /** @var \MouseOver\Storage\IFileSystem  */
     protected $fileSystem;
 
+    /** @var boolean */
+    private $forceDownload = true;
+
     /**
      * Constructor
      *
@@ -290,6 +293,22 @@ class Storage implements IStorage
         $path = $this->filePath($name);
         $newPath = $this->filePath($newName);
         $this->fileSystem->rename($path, $newPath, $overwrite);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isForceDownload()
+    {
+        return $this->forceDownload;
+    }
+
+    /**
+     * @param bool $forceDownload
+     */
+    public function setForceDownload($forceDownload)
+    {
+        $this->forceDownload = $forceDownload;
     }
 
 }

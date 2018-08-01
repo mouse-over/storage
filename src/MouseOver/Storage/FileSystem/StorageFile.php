@@ -21,7 +21,7 @@ use MouseOver\Storage\IStorageFile;
  * @property-read string                                   $publicName
  * @property-read \MouseOver\Storage\FileSystem\FileReader $reader
  * @property-read string                                   $realPath
- * @property-read string $storageName
+ * @property-read string                                   $storageName
  */
 class StorageFile implements IStorageFile
 {
@@ -35,6 +35,15 @@ class StorageFile implements IStorageFile
 
     /** @var   */
     private $handle;
+
+    /**
+     * @return bool
+     */
+    public function isForceDownload()
+    {
+        return $this->storage->isForceDownload();
+    }
+
 
     /**
      * Constructor

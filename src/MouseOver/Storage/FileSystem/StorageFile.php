@@ -22,6 +22,7 @@ use MouseOver\Storage\IStorageFile;
  * @property-read \MouseOver\Storage\FileSystem\FileReader $reader
  * @property-read string                                   $realPath
  * @property-read string                                   $storageName
+ * @property-read boolean                                  $isForceDownload
  */
 class StorageFile implements IStorageFile
 {

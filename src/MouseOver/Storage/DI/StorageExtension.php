@@ -70,7 +70,7 @@ class StorageExtension extends CompilerExtension
         $routesList->addSetup(
             '$service[] = new ' . $config['routerClass'] . '(?, function ($presenter, $storage, $file) { return ?->handle($storage, $file, $presenter->getRequest()->getParameters()); })',
             array(
-                $config['module'].'/<storage>/<file [a-zA-Z0-9\-_.\/]+>',
+                ($config['module'] ? $config['module'] . '/': '').'<storage>/<file [a-zA-Z0-9\-_.\/]+>',
                 $this->prefix('@responder')
             )
         );
